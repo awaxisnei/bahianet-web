@@ -1,0 +1,15 @@
+name: Configuracion de BahiaNet
+
+on: workflow_dispatch
+
+permissions: {}
+
+jobs:
+  comprobar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comprobar que existen los dos valores
+        env:
+          URL: ${{ vars.URL_PREPROD }}
+          TOKEN: ${{ secrets.TOKEN_DESPLIEGUE }}
+        run: test -n "$URL" && test -n "$TOKEN"
